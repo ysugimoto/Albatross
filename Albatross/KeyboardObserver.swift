@@ -12,11 +12,14 @@ enum KeyboardOberserError: Error {
 }
 
 class KeyboardObserver: NSObject {
-    private var alias: KeyAlias
+    private let alias: KeyAlias
+    private let focus: AppFocus
     private var isPaused: Bool = false
+    private var isControl: Bool = false
     
-    init(alias: KeyAlias) {
+    init(alias: KeyAlias, focus: AppFocus) {
         self.alias = alias
+        self.focus = focus
     }
     
     public func pause() {
@@ -70,6 +73,9 @@ class KeyboardObserver: NSObject {
         switch type {
         case CGEventType.keyDown:
             print("keydown", event.getIntegerValueField(.keyboardEventKeycode), event.flags)
+            if isControl {
+                tryFocus(event: event)
+            }
             if let converted = convertEvent(event: event, type: type) {
                 let keyCode = converted.getIntegerValueField(.keyboardEventKeycode)
                 if isMetaKey(keyCode) {
@@ -100,6 +106,11 @@ class KeyboardObserver: NSObject {
                     postEmuratedEvent(keyCode: converted.getIntegerValueField(.keyboardEventKeycode))
                     return Unmanaged.passUnretained(event)
                 }
+                if event.flags.rawValue == controlKeyCGEventFlags {
+                    isControl = true
+                }
+            } else {
+                isControl = false
             }
         default:
             break
@@ -131,5 +142,24 @@ class KeyboardObserver: NSObject {
         
         keyDown.post(tap: CGEventTapLocation.cghidEventTap)
         keyUp.post(tap: CGEventTapLocation.cghidEventTap)
+    }
+    
+    private func tryFocus(event: CGEvent) {
+        let focuses = focus.getFocusConfig()
+        
+        if let appName = focuses[event.getIntegerValueField(.keyboardEventKeycode)] {
+            print("Focus app", appName)
+            let workspace = NSWorkspace.shared
+            let apps = workspace.runningApplications
+            
+            for app in apps {
+                if let name = app.localizedName {
+                    if name == appName {
+                        app.activate(options: .activateIgnoringOtherApps)
+                    }
+                }
+            }
+        }
+        
     }
 }

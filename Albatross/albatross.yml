@@ -90,3 +90,17 @@ alias:
   global: []
   apps: []
 
+# "focus" fields specifies focus application shortcur key using CGEvent.
+# You can specify with array of {"key": [keyname], "app": [application name] }.
+# Note that the focus key is always combinated with Control meta key.
+#
+# Example
+#
+# ```
+# focus:
+#  - key: t
+#    app: Terminal
+#
+# Above settings registers:
+#  - Focus "Terminal.app" When Ctrl+t key combination is pressed.
+focus: []

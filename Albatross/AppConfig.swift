@@ -11,10 +11,12 @@ import Yams
 struct Config: Codable {
     let remap: [String: String]
     let alias: AliasConfig
+    let focus: [Focus]
     
     init() {
         remap = [:]
         alias = AliasConfig.init()
+        focus = []
     }
 }
 
@@ -27,6 +29,7 @@ struct AliasConfig: Codable {
         apps = []
     }
 }
+
 struct Alias: Codable {
     let from: [String]
     // swiftlint:disable:next identifier_name
@@ -48,6 +51,16 @@ struct AppAlias: Codable {
     init() {
         name = ""
         alias = []
+    }
+}
+
+struct Focus: Codable {
+    let key: String
+    let app: String
+    
+    init() {
+        key = ""
+        app = ""
     }
 }
 
@@ -121,6 +134,10 @@ class AppConfig: NSObject {
         return aliases.sorted {
             $0.from.count > $1.from.count
         }
+    }
+    
+    public func getFocusConfig() -> [Focus] {
+        return config.focus
     }
     
     public func load() throws {

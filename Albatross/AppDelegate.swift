@@ -17,6 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private let keyboardObserver: KeyboardObserver
     private let keyRemapper: KeyRemapper
     private let keyAlias: KeyAlias
+    private let appFocus: AppFocus
     private let appConfig = AppConfig()
     private let menu: NSMenu = NSMenu()
     private var isPauseRemap = false
@@ -25,7 +26,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     override init() {
         keyRemapper = KeyRemapper()
         keyAlias = KeyAlias(config: appConfig)
-        keyboardObserver = KeyboardObserver(alias: keyAlias)
+        appFocus = AppFocus(config: appConfig)
+        keyboardObserver = KeyboardObserver(alias: keyAlias, focus: appFocus)
         isLaunchAtLogin = UserDefaults.standard.bool(forKey: launchAtLoginKey)
     }
     
@@ -60,11 +62,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             self.appConfig.watch { config in
                 self.keyRemapper.updateConfig(config: config)
                 self.keyAlias.updateConfig(config: config)
+                self.appFocus.updateConfig(config: config)
             }
             
             // Initialize
             self.keyRemapper.updateConfig(config: self.appConfig)
             self.keyAlias.updateConfig(config: self.appConfig)
+            self.appFocus.updateConfig(config: self.appConfig)
             
             do {
                 try self.keyboardObserver.start()

@@ -28,6 +28,7 @@
 		50FB2503279CA68700A3736F /* KeyRemapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FB2502279CA68700A3736F /* KeyRemapper.swift */; };
 		50FB2505279CACF300A3736F /* KeyAlias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FB2504279CACF300A3736F /* KeyAlias.swift */; };
 		50FB250A279DE35700A3736F /* AppTrusted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FB2509279DE35600A3736F /* AppTrusted.swift */; };
+		E4B6B83D2C7A448100882200 /* AppFocus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B6B83C2C7A448100882200 /* AppFocus.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -70,6 +71,7 @@
 		50FB2502279CA68700A3736F /* KeyRemapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyRemapper.swift; sourceTree = "<group>"; };
 		50FB2504279CACF300A3736F /* KeyAlias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyAlias.swift; sourceTree = "<group>"; };
 		50FB2509279DE35600A3736F /* AppTrusted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTrusted.swift; sourceTree = "<group>"; };
+		E4B6B83C2C7A448100882200 /* AppFocus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFocus.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 				50C91BDE27A36B090064D50B /* KeyEvent.swift */,
 				50C91BE027A36B290064D50B /* SourceEvent.swift */,
 				50C91BE227A36BF40064D50B /* DestinationEvent.swift */,
+				E4B6B83C2C7A448100882200 /* AppFocus.swift */,
 			);
 			path = Albatross;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				50FB2503279CA68700A3736F /* KeyRemapper.swift in Sources */,
 				50C91BE327A36BF40064D50B /* DestinationEvent.swift in Sources */,
 				50FB24FC279C810300A3736F /* AppNotification.swift in Sources */,
+				E4B6B83D2C7A448100882200 /* AppFocus.swift in Sources */,
 				50CA2036279F1B5F0090B705 /* KeyCode.swift in Sources */,
 				50FB24FA279C80C900A3736F /* AppAlert.swift in Sources */,
 				50C91BE127A36B290064D50B /* SourceEvent.swift in Sources */,
@@ -437,6 +441,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Albatross/Albatross.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -466,6 +471,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Albatross/Albatross.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;

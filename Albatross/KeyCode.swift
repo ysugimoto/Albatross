@@ -9,6 +9,7 @@ import Foundation
 
 let unknownKeyCode: Int64 = -1
 let defaultCGEventFlags: UInt64 = 256
+let controlKeyCGEventFlags: UInt64 = 262401
 
 let keyCodeMap: [String: (Int64, Bool)] = [
     // Input keys, typically can trap on keyDown/keyUp event
