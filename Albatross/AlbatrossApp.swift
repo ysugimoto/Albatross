@@ -21,6 +21,8 @@ struct AlbatrossApp: App {
         Settings {
             EmptyView()
         }
+        .defaultLaunchBehavior(.suppressed)
+        .restorationBehavior(.disabled)
     }
 }
 

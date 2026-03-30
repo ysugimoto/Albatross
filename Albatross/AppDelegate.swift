@@ -83,7 +83,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func launchAtLogin(_ sender: NSButton) {
         isLaunchAtLogin = !isLaunchAtLogin
         
-        if !SMLoginItemSetEnabled(launchHelperAppIdentifier as CFString, isLaunchAtLogin) {
+        do {
+            try SMAppService.mainApp.register()
+        } catch {
             AppAlert.display(message: "Failed to set launchLogin")
             return
         }

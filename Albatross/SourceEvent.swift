@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreGraphics
 
 protocol SourceEvent {
     func match(event: CGEvent, type: CGEventType) -> Bool

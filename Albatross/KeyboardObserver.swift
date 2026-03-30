@@ -155,7 +155,7 @@ class KeyboardObserver: NSObject {
             for app in apps {
                 if let name = app.localizedName {
                     if name == appName {
-                        app.activate(options: .activateIgnoringOtherApps)
+                        app.activate()
                     }
                 }
             }
